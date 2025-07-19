@@ -12,9 +12,9 @@ configDotenv()
 connectDb();
 const port = process.env.PORT || 5000
 app.use(cors({
-    origin:"*",
-    withCredentials:true
-    
+    origin: "*",
+    credentials: true
+
 }))
 app.use(express.json());
 app.use(cookieParser())
@@ -22,15 +22,15 @@ app.use(cookieParser())
 
 
 
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     res.send("hello dev")
 })
 
-app.use("/api/v1",authRouter)
-app.use("/api/v1",userRouter)
+app.use("/api/v1", authRouter)
+app.use("/api/v1", userRouter)
 
 
-app.listen(port,()=>{
+app.listen(port, () => {
     console.log(`server up port ${port}`)
 })
 
