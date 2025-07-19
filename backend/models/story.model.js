@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const postSchema = new mongoose.Schema({
+const storySchema = new mongoose.Schema({
     auther: {
 
         type: mongoose.Types.ObjectId,
@@ -21,6 +21,16 @@ const postSchema = new mongoose.Schema({
         type: String,
 
     },
+
+    viewers: [
+
+        {
+            type: mongoose.Types.ObjectId,
+            ref: "User",
+        }
+
+    ],
+
     likes: [
 
         {
@@ -29,20 +39,25 @@ const postSchema = new mongoose.Schema({
         }
 
     ],
-     comments: [
+    comments: [
 
         {
             type: mongoose.Types.ObjectId,
             ref: "User",
         }
 
-    ]
+    ],
+    createdAt: {
+        type: Date,
+        default: Date.now(),
+        expires: 86400
+    }
 
 
 
 
-},{timestamps:true})
+}, { timestamps: true })
 
-const Post = mongoose.model("Post",postSchema)
+const Story = mongoose.model("Story", storySchema)
 
-export default Post
+export default Story
