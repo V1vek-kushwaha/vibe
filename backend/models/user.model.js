@@ -72,7 +72,17 @@ const userSchema = new mongoose.Schema({
             ref: "Story",
         }
 
-    ]
+    ],
+    resetOtp: {
+        type: String
+    },
+    otpExipres: {
+        type: Date
+    },
+    isOtpVerified: {
+        type: Boolean,
+        default: true
+    },
 }, { timestamps: true })
 
 const User = mongoose.model("User", userSchema)

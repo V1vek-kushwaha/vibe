@@ -107,7 +107,7 @@ const Signup = () => {
                                 {formik.isSubmitting ? (
                                     <>
                                         <ClipLoader size={24} color="#fff" />
-                                        <span className="ml-3">Signing Up...</span>
+                                        <span className="ml-3">Signing In...</span>
                                     </>
                                 ) : (
                                     <>

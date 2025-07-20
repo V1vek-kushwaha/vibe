@@ -75,7 +75,7 @@ const Signin = () => {
                 <div className="text-red-500 text-xs ">{formik.errors.password}</div>
               )}
 
-              <p className='text-gray-500 mb-2'>Forgot Password</p>
+              <p className='text-gray-500 my-2 cursor-pointer' onClick={() => navigate("/forgotpassword")}>Forgot Password</p>
               <button
                 type="submit"
                 disabled={formik.isSubmitting}
