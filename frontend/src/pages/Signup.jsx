@@ -7,13 +7,15 @@ import * as Yup from 'yup'
 import { ClipLoader } from 'react-spinners'
 import { useNavigate } from 'react-router-dom'
 import axiosInstance from '../utils/axiosInstance'
+import { useDispatch } from 'react-redux'
+import { setUserData } from '../redux/user.Slice'
 
 
 
 
 const Signup = () => {
     const navigate = useNavigate() // For navigation
-
+    const dispatch = useDispatch()
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -29,10 +31,11 @@ const Signup = () => {
         }),
         onSubmit: async (values, { setSubmitting, resetForm, setStatus }) => {
             try {
-                const response = await axiosInstance.post('/signup', values);  // No need to repeat the base URL
+                const response = await axiosInstance.post('/signup', values);
+                dispatch(setUserData(response.data))  // No need to repeat the base URL
                 setStatus({ success: 'Signup successful!' });
                 resetForm();
-                navigate('/signin')
+                navigate('/');
             } catch (error) {
                 setStatus({ error: error.response?.data?.message || 'Signup failed' });
             } finally {

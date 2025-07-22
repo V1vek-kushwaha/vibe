@@ -6,7 +6,7 @@ const axiosInstance = axios.create({
     headers: {
         'Content-Type': 'application/json', // Default content type
         'Authorization': 'Bearer YOUR_TOKEN',  // Example of adding a token to headers
-    }
+    }, withCredentials: true,
 });
 
 export default axiosInstance;
